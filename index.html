@@ -5,216 +5,335 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liam Rose - Personal Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f4f4f4;
-            --text-color: #333;
-            --header-bg: #ffffff;
-            --header-text: #333;
-            --accent-color: #3498db;
-            --card-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            --button-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            --transition-speed: 0.3s;
-        }
+    --bg-color: #f4f4f4;
+    --text-color: #333;
+    --header-bg: #ffffff;
+    --header-text: #333;
+    --accent-color: #4a90e2;
+    --card-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    --button-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    --transition-speed: 0.3s;
+    --header-bg-rgb: 255, 255, 255;
+}
 
-        .dark-mode {
-            --bg-color: #1a1a1a;
-            --text-color: #f4f4f4;
-            --header-bg: #2c3e50;
-            --header-text: #f4f4f4;
-            --accent-color: #2980b9;
-            --card-shadow: 0 2px 5px rgba(255,255,255,0.1);
-            --button-shadow: 0 2px 5px rgba(255,255,255,0.2);
-        }
+.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #f4f4f4;
+    --header-bg: #2c3e50;
+    --header-text: #f4f4f4;
+    --accent-color: #64b5f6;
+    --card-shadow: 0 4px 6px rgba(255,255,255,0.1);
+    --button-shadow: 0 2px 5px rgba(255,255,255,0.2);
+    --header-bg-rgb: 44, 62, 80;
+}
 
-        body {
-            font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: var(--bg-color);
-            transition: background-color var(--transition-speed), color var(--transition-speed);
-        }
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--bg-color);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
 
-        header {
-            background-color: var(--header-bg);
-            color: var(--header-text);
-            text-align: center;
-            padding: 2em;
-            border-radius: 8px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            transition: all var(--transition-speed);
-        }
+header {
+    background: linear-gradient(135deg, var(--header-bg), var(--accent-color));
+    color: var(--header-text);
+    text-align: center;
+    padding: 3em;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: all var(--transition-speed);
+}
 
-        .geometric-design {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.1;
-            pointer-events: none;
-            transition: all var(--transition-speed);
-        }
+.geometric-design {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    pointer-events: none;
+    transition: all var(--transition-speed);
+}
 
-        .geometric-design::before,
-        .geometric-design::after {
-            content: '';
-            position: absolute;
-            background-color: var(--accent-color);
-            transition: all var(--transition-speed);
-        }
+.geometric-design::before,
+.geometric-design::after {
+    content: '';
+    position: absolute;
+    background-color: var(--accent-color);
+    transition: all var(--transition-speed);
+}
 
-        .geometric-design::before {
-            width: 150%;
-            height: 150px;
-            transform: rotate(-45deg) translateX(-50%) translateY(-50%);
-            top: 0;
-            left: 0;
-        }
+.geometric-design::before {
+    width: 200%;
+    height: 200px;
+    transform: rotate(-45deg) translateX(-50%) translateY(-50%);
+    top: 0;
+    left: 0;
+    animation: rotate 30s linear infinite;
+}
 
-        .geometric-design::after {
-            width: 150px;
-            height: 150%;
-            transform: rotate(-45deg) translateX(50%) translateY(50%);
-            bottom: 0;
-            right: 0;
-        }
+.geometric-design::after {
+    width: 200px;
+    height: 200%;
+    transform: rotate(-45deg) translateX(50%) translateY(50%);
+    bottom: 0;
+    right: 0;
+    animation: rotate 25s linear infinite reverse;
+}
 
-        h1 {
-            margin-bottom: 0;
-            position: relative;
-            z-index: 1;
-        }
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
-        nav {
-            margin-top: 1em;
-            position: relative;
-            z-index: 1;
-        }
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
 
-        nav a {
-            color: var(--header-text);
-            text-decoration: none;
-            padding: 0.5em 1em;
-            border-radius: 3px;
-            transition: all var(--transition-speed);
-            display: inline-block;
-            margin: 0.25em;
-            box-shadow: var(--button-shadow);
-        }
+h1 {
+    margin-bottom: 0;
+    position: relative;
+    z-index: 1;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
 
-        nav a:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
+nav {
+    margin-top: 1em;
+    position: relative;
+    z-index: 1;
+}
 
-        section {
-            background-color: var(--header-bg);
-            margin: 20px 0;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: var(--card-shadow);
-            transition: all var(--transition-speed);
-        }
+nav a {
+    color: var(--header-text);
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border-radius: 25px;
+    transition: all var(--transition-speed);
+    display: inline-block;
+    margin: 0.25em;
+    box-shadow: var(--button-shadow);
+    background-color: rgba(255,255,255,0.1);
+}
 
-        h2 {
-            color: var(--accent-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
-        }
+nav a:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
 
-        .project {
-            margin-bottom: 20px;
-            transition: all var(--transition-speed);
-        }
+section {
+    background-color: var(--header-bg);
+    margin: 20px 0;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transition: all var(--transition-speed);
+}
 
-        .project:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+h2 {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    font-size: 2em;
+}
 
-        .project h3 {
-            color: var(--accent-color);
-        }
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
 
-        .skill-tag {
-            display: inline-block;
-            background-color: var(--bg-color);
-            padding: 3px 8px;
-            margin: 2px;
-            border-radius: 15px;
-            font-size: 0.9em;
-            transition: all var(--transition-speed);
-        }
+.project {
+    background-color: rgba(var(--header-bg-rgb), 0.5);
+    border-radius: 8px;
+    padding: 20px;
+    transition: all var(--transition-speed);
+}
 
-        .skill-tag:hover {
-            background-color: var(--accent-color);
-            color: var(--header-bg);
-        }
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
 
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 20px auto;
-            display: block;
-            border: 5px solid var(--accent-color);
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: all var(--transition-speed);
-        }
+.project h3 {
+    color: var(--accent-color);
+    font-size: 1.5em;
+    margin-top: 0;
+}
 
-        .profile-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
+.skill-tag {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--header-bg);
+    padding: 3px 8px;
+    margin: 2px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    transition: all var(--transition-speed);
+}
 
-        .dark-mode-toggle {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            color: var(--header-text);
-            font-size: 1.5em;
-            cursor: pointer;
-            z-index: 2;
-            transition: all var(--transition-speed);
-        }
+.skill-tag:hover {
+    background-color: var(--header-bg);
+    color: var(--accent-color);
+}
 
-        .dark-mode-toggle:hover {
-            transform: rotate(360deg);
-        }
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 20px auto;
+    display: block;
+    border: 5px solid var(--accent-color);
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all var(--transition-speed);
+}
 
-        .resume-button {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: var(--header-text);
-            text-decoration: none;
-            padding: 0.5em 1em;
-            border-radius: 25px;
-            margin-top: 1em;
-            transition: all var(--transition-speed);
-            box-shadow: var(--button-shadow);
-        }
+.profile-image:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
 
-        .resume-button:hover {
-            background-color: var(--header-bg);
-            color: var(--accent-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
+.dark-mode-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--header-text);
+    font-size: 1.5em;
+    cursor: pointer;
+    z-index: 2;
+    transition: all var(--transition-speed);
+}
+
+.dark-mode-toggle:hover {
+    transform: rotate(360deg);
+}
+
+.resume-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--header-text);
+    text-decoration: none;
+    padding: 0.7em 1.5em;
+    border-radius: 25px;
+    margin-top: 1em;
+    transition: all var(--transition-speed);
+    box-shadow: var(--button-shadow);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.resume-button:hover {
+    background-color: var(--header-bg);
+    color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.geometric-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.geometric-shape {
+    position: absolute;
+    border: 2px solid var(--accent-color);
+    opacity: 0.05;
+    animation: rotate 30s linear infinite;
+}
+
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 5%;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.shape-2 {
+    width: 250px;
+    height: 250px;
+    top: 60%;
+    right: 10%;
+    border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+    animation-duration: 25s;
+    animation-direction: reverse;
+}
+
+.shape-3 {
+    width: 200px;
+    height: 200px;
+    bottom: 15%;
+    left: 15%;
+    border-radius: 50% 50% 30% 70% / 50% 50% 70% 30%;
+    animation-duration: 35s;
+}
+
+.shape-4 {
+    width: 350px;
+    height: 350px;
+    top: 5%;
+    right: 20%;
+    border-radius: 60% 40% 40% 60% / 60% 60% 40% 40%;
+    animation-duration: 40s;
+    animation-direction: reverse;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    header {
+        padding: 2em;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Modify the existing body style */
+body {
+    position: relative;
+    overflow-x: hidden;
+    background-color: var(--bg-color);
+}
+header, section, footer {
+    background-color: rgba(var(--header-bg-rgb), 0.9);
+    backdrop-filter: blur(5px);
+}
     </style>
 </head>
 <body>
+    <div class="geometric-background">
+        <div class="geometric-shape shape-1"></div>
+        <div class="geometric-shape shape-2"></div>
+        <div class="geometric-shape shape-3"></div>
+        <div class="geometric-shape shape-4"></div>
+    </div>
     <header>
         <div class="geometric-design"></div>
         <button class="dark-mode-toggle" id="darkModeToggle">🌓</button>
@@ -230,113 +349,138 @@
         <a href="path/to/your/resume.pdf" download class="resume-button">Download Resume</a>
     </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hi! I’m Liam, an aspiring Data Scientist/Data Engineer.
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hi! I'm Liam, an aspiring Data Scientist/Data Engineer. As a Master of Data Science student, I have acquired and am continuing to develop a robust skill set in Python and R programming, with a strong foundation in statistical principles and methods from my Bachelors of Medical Science. My expertise lies in applying both traditional and machine learning methods to analyse complex datasets.</p>
+        <p>I thrive on tackling challenging problems and extracting meaningful insights from nuanced data. With a strong foundation in statistical principles and methods, I enjoy diving deep into datasets to uncover patterns and draw valuable inferences.</p>
+    </section>
 
-As a Master of Data Science student I have acquired and am continuing to develop a robust skill set in Python and R programming, with a strong foundation in statistical principles and methods from my Bachelors of Medical Science. My expertise lies in applying both traditional and machine learning methods to analyse complex datasets.
+    <section id="skills">
+        <h2>Skills</h2>
+        <p>
+            • Strong baseline understanding of both Frequentist and Bayesian models of statistics.<br>
+            • Use of statistical modeling and analysis to draw insights from varied data types.<br>
+            • Data Munging to clean and filter data for use in analysis and modeling.<br>
+            • The R programming language and the RStudio development environment.<br>
+            • Intermediate Python, including the Pandas/NumPy/Tensorflow packages.<br>
+            • Interaction with both SQL and NoSQL database types and their associated schema.<br>
+            • High speed problem identification and resolution.<br>
+            • Communication of high-level statistical concepts to lay audiences.<br>
+            • Intuitive understanding of differing team dynamics and workflows.<br>
+            • Preference for fast-paced environments with dynamic challenges.
+        </p>
+    </section>
 
-I thrive on tackling challenging problems and extracting meaningful insights from nuanced data. With a strong foundation in statistical principles and methods, I enjoy diving deep into datasets to uncover patterns and draw valuable inferences.</p>
-  </section>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-grid">
+            <div class="project">
+                <h3>League of Legends Performance Dashboard</h3>
+                <p>Using the Riot Games API to pull match data for a user and display statistics about their performance in recent games.</p>
+                <div class="skills">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">NoSQL</span>
+                    <span class="skill-tag">API</span>
+                    <span class="skill-tag">Plotly</span>
+                </div>
+            </div>
+            <div class="project">
+                <h3>Up! Bank Dashboard</h3>
+                <p>Using the Up! Bank Developer API to receive data about my bank accounts, spending and income and using a Plotly Dashboard to show useful information about my finances.</p>
+                <div class="skills">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">NoSQL</span>
+                    <span class="skill-tag">API</span>
+                    <span class="skill-tag">Plotly</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>League of Legends Performance Dashboard</h3>
-      <p>Using the Riot Games API to pull match data for a user and display statistics about their performance in recent games.</p>
-      <div class="skills">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">NoSQL</span>
-        <span class="skill-tag">API</span>
-        <span class="skill-tag">Plotly</span>
-      </div>
-    </div>
-    <div class="project">
-      <h3>Up! Bank Dashboard</h3>
-      <p>Using the Up! Bank Developer API to receive data about my bank accounts, spending and income and using a Plotly Dashboard to show useful information about my finances.</p>
-      <div class="skills">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">NoSQL</span>
-        <span class="skill-tag">API</span>
-        <span class="skill-tag">Plotly</span>
-      </div>
-    </div>
-     </section>
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="job">
+            <h3>Cocktail Bartender, Opera Bar</h3>
+            <p><em>September 2022 – Present</em></p>
+        </div>
+        <div class="job">
+            <h3>Bartender, Rowers on Cooks River</h3>
+            <p><em>November 2021 - September 2022</em></p>
+        </div>
+        <div class="job">
+            <h3>Cocktail Bartender, Franc Macs</h3>
+            <p><em>July 2021 - November 2021</em></p>
+        </div>
+        <div class="job">
+            <h3>Cocktail Bartender, Untied Barangaroo</h3>
+            <p><em>January 2020 - July 2021</em></p>
+        </div>
+        <div class="job">
+            <h3>Cocktail Bartender, Babylon Sydney</h3>
+            <p><em>February 2019 - January 2020</em></p>
+        </div>
+    </section>
 
-  <section id="experience">
-    <h2>Experience</h2>
-    <div class="job">
-      <h3>Cocktail Bartender, Opera Bar</h3>
-      <p><em>September 2022 – Present</em></p>
-    </div>
-    <div class="job">
-      <h3>Bartender, Rowers on Cooks River</h3>
-      <p><em>November 2021 - September 2022</em></p>
-    </div>
-    <div class="job">
-      <h3>Cocktail Bartender, Franc Macs</h3>
-      <p><em>July 2021 - November 2021</em></p>
-    </div>
-    <div class="job">
-      <h3>Cocktail Bartender, Untied Barangaroo</h3>
-      <p><em>January 2020 - July 2021</em></p>
-    </div>
-    <div class="job">
-      <h3>Cocktail Bartender, Babylon Sydney</h3>
-      <p><em>February 2019 - January 2020</em></p>
-    </div>
-  </section>
+    <section id="contact">
+        <h2>Get in Touch</h2>
+        <p>If you'd like to know more about me or want to discuss anything, I'm always keen to hear from you!</p>
+        <ul>
+            <li>Email: <a href="mailto:liamrosey@pm.me">liamrosey@pm.me</a></li>
+            <li>LinkedIn: <a href="https://www.linkedin.com/in/liam-rose-341670309/">https://www.linkedin.com/in/liam-rose-341670309/</a></li>
+        </ul>
+    </section>
 
-  
-
-  <section id="contact">
-    <h2>Get in Touch</h2>
-    <p>If you'd like to know more about me or want to discuss anything, I'm always keen to hear from you!</p>
-    <ul>
-      <li>Email: <a href="mailto:liamrosey@pm.me">liamrosey@pm.me</a></li>
-      <li>LinkedIn: <a href="https://www.linkedin.com/in/liam-rose-341670309/">https://www.linkedin.com/in/liam-rose-341670309/</a></li>
-    </ul>
-  </section>
-
-   <footer>
+    <footer>
         <p>&copy; 2024 Liam Rose. All rights reserved.</p>
     </footer>
 
     <script>
         const darkModeToggle = document.getElementById('darkModeToggle');
-        const body = document.body;
+const body = document.body;
 
-        darkModeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
-        });
+function setDarkMode(isDark) {
+    if (isDark) {
+        body.classList.add('dark-mode');
+    } else {
+        body.classList.remove('dark-mode');
+    }
+    localStorage.setItem('darkMode', isDark);
+}
 
-        // Check for saved dark mode preference
-        if (localStorage.getItem('darkMode') === 'true') {
-            body.classList.add('dark-mode');
+darkModeToggle.addEventListener('click', () => {
+    setDarkMode(!body.classList.contains('dark-mode'));
+});
+
+// Check for saved dark mode preference
+document.addEventListener('DOMContentLoaded', () => {
+    setDarkMode(localStorage.getItem('darkMode') === 'true');
+});
+
+// Add smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
         }
+    });
+});
 
-        // Add smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Add hover effect for project cards
-        document.querySelectorAll('.project').forEach(project => {
-            project.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-5px)';
-                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
-            });
-            project.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-                this.style.boxShadow = 'none';
-            });
-        });
+// Add hover effect for project cards
+document.querySelectorAll('.project').forEach(project => {
+    project.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-5px)';
+        this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+    });
+    project.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = 'none';
+    });
+});
     </script>
 </body>
 </html>
