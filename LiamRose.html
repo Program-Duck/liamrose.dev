@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="https://liamrose.com/" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liam Rose - Personal Website</title>
+    <style>
+        :root {
+            --bg-color: #f4f4f4;
+            --text-color: #333;
+            --header-bg: #ffffff;
+            --header-text: #333;
+            --accent-color: #3498db;
+            --card-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            --button-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            --transition-speed: 0.3s;
+        }
+
+        .dark-mode {
+            --bg-color: #1a1a1a;
+            --text-color: #f4f4f4;
+            --header-bg: #2c3e50;
+            --header-text: #f4f4f4;
+            --accent-color: #2980b9;
+            --card-shadow: 0 2px 5px rgba(255,255,255,0.1);
+            --button-shadow: 0 2px 5px rgba(255,255,255,0.2);
+        }
+
+        body {
+            font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-color);
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            text-align: center;
+            padding: 2em;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all var(--transition-speed);
+        }
+
+        .geometric-design {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            pointer-events: none;
+            transition: all var(--transition-speed);
+        }
+
+        .geometric-design::before,
+        .geometric-design::after {
+            content: '';
+            position: absolute;
+            background-color: var(--accent-color);
+            transition: all var(--transition-speed);
+        }
+
+        .geometric-design::before {
+            width: 150%;
+            height: 150px;
+            transform: rotate(-45deg) translateX(-50%) translateY(-50%);
+            top: 0;
+            left: 0;
+        }
+
+        .geometric-design::after {
+            width: 150px;
+            height: 150%;
+            transform: rotate(-45deg) translateX(50%) translateY(50%);
+            bottom: 0;
+            right: 0;
+        }
+
+        h1 {
+            margin-bottom: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            margin-top: 1em;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav a {
+            color: var(--header-text);
+            text-decoration: none;
+            padding: 0.5em 1em;
+            border-radius: 3px;
+            transition: all var(--transition-speed);
+            display: inline-block;
+            margin: 0.25em;
+            box-shadow: var(--button-shadow);
+        }
+
+        nav a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        section {
+            background-color: var(--header-bg);
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            transition: all var(--transition-speed);
+        }
+
+        h2 {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+
+        .project {
+            margin-bottom: 20px;
+            transition: all var(--transition-speed);
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .project h3 {
+            color: var(--accent-color);
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background-color: var(--bg-color);
+            padding: 3px 8px;
+            margin: 2px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            transition: all var(--transition-speed);
+        }
+
+        .skill-tag:hover {
+            background-color: var(--accent-color);
+            color: var(--header-bg);
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 20px auto;
+            display: block;
+            border: 5px solid var(--accent-color);
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all var(--transition-speed);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .dark-mode-toggle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: var(--header-text);
+            font-size: 1.5em;
+            cursor: pointer;
+            z-index: 2;
+            transition: all var(--transition-speed);
+        }
+
+        .dark-mode-toggle:hover {
+            transform: rotate(360deg);
+        }
+
+        .resume-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--header-text);
+            text-decoration: none;
+            padding: 0.5em 1em;
+            border-radius: 25px;
+            margin-top: 1em;
+            transition: all var(--transition-speed);
+            box-shadow: var(--button-shadow);
+        }
+
+        .resume-button:hover {
+            background-color: var(--header-bg);
+            color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="geometric-design"></div>
+        <button class="dark-mode-toggle" id="darkModeToggle">🌓</button>
+        <h1>Liam Rose</h1>
+        <p>Data Science (Artificial Intelligence) Masters Student</p>
+        <img src="https://i.imgur.com/Hp9zrrG.jpeg" alt="Liam Rose" class="profile-image">
+        <nav>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <a href="path/to/your/resume.pdf" download class="resume-button">Download Resume</a>
+    </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hi! I’m Liam, an aspiring Data Scientist/Data Engineer.
+
+As a Master of Data Science student I have acquired and am continuing to develop a robust skill set in Python and R programming, with a strong foundation in statistical principles and methods from my Bachelors of Medical Science. My expertise lies in applying both traditional and machine learning methods to analyse complex datasets.
+
+I thrive on tackling challenging problems and extracting meaningful insights from nuanced data. With a strong foundation in statistical principles and methods, I enjoy diving deep into datasets to uncover patterns and draw valuable inferences.</p>
+  </section>
+
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>League of Legends Performance Dashboard</h3>
+      <p>Using the Riot Games API to pull match data for a user and display statistics about their performance in recent games.</p>
+      <div class="skills">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">NoSQL</span>
+        <span class="skill-tag">API</span>
+        <span class="skill-tag">Plotly</span>
+      </div>
+    </div>
+    <div class="project">
+      <h3>Up! Bank Dashboard</h3>
+      <p>Using the Up! Bank Developer API to receive data about my bank accounts, spending and income and using a Plotly Dashboard to show useful information about my finances.</p>
+      <div class="skills">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">NoSQL</span>
+        <span class="skill-tag">API</span>
+        <span class="skill-tag">Plotly</span>
+      </div>
+    </div>
+     </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="job">
+      <h3>Cocktail Bartender, Opera Bar</h3>
+      <p><em>September 2022 – Present</em></p>
+    </div>
+    <div class="job">
+      <h3>Bartender, Rowers on Cooks River</h3>
+      <p><em>November 2021 - September 2022</em></p>
+    </div>
+    <div class="job">
+      <h3>Cocktail Bartender, Franc Macs</h3>
+      <p><em>July 2021 - November 2021</em></p>
+    </div>
+    <div class="job">
+      <h3>Cocktail Bartender, Untied Barangaroo</h3>
+      <p><em>January 2020 - July 2021</em></p>
+    </div>
+    <div class="job">
+      <h3>Cocktail Bartender, Babylon Sydney</h3>
+      <p><em>February 2019 - January 2020</em></p>
+    </div>
+  </section>
+
+  
+
+  <section id="contact">
+    <h2>Get in Touch</h2>
+    <p>If you'd like to know more about me or want to discuss anything, I'm always keen to hear from you!</p>
+    <ul>
+      <li>Email: <a href="mailto:liamrosey@pm.me">liamrosey@pm.me</a></li>
+      <li>LinkedIn: <a href="https://www.linkedin.com/in/liam-rose-341670309/">https://www.linkedin.com/in/liam-rose-341670309/</a></li>
+    </ul>
+  </section>
+
+   <footer>
+        <p>&copy; 2024 Liam Rose. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+        });
+
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            body.classList.add('dark-mode');
+        }
+
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add hover effect for project cards
+        document.querySelectorAll('.project').forEach(project => {
+            project.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            });
+            project.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
